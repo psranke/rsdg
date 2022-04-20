@@ -14,8 +14,8 @@ library(tools)
 #data <- read.table(unz("/home/peterxps/Downloads", "Sales.dat"), nrows=10, header=T, quote="\"", sep=",")
 
 # load functions
-myfun <- function(x){x + 7}
-myfun(2)
+# myfun <- function(x){x + 7}
+# myfun(2)
 
 #zipdf <- unzip("/home/peterxps/Downloads/dwca-great_reed_warbler-v1.4.zip", list = TRUE)
 
@@ -90,7 +90,7 @@ for(i in seq_along(levels(df$samplingsprotocols))){
   assign(paste0("event_", df$samplingsprotocols[i]), data.frame(subset(event, samplingProtocol == df$samplingsprotocols[i])))
   assign(paste0("mof_", df$samplingsprotocols[i]), data.frame(subset(extendedmeasurementorfact2, samplingProtocol == df$samplingsprotocols[i])))
 
-  
+
   # finding occurrences based on sample protocols
   tab <- paste0("event_", df$samplingsprotocols[i])
   assign(paste0("occurr_", df$samplingsprotocols[i]), data.frame(subset(occurrence2, (id %in% occurrence2$eventID) & (occurrence2$samplingProtocol.y %in% df$samplingsprotocols[i]))))
