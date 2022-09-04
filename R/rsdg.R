@@ -1,13 +1,10 @@
-enterFileName <- function(){
-  filename <- readline(prompt="Enter file name: ")
-  return(filename)
-}
-
 rsdg <- function(filename){
 
+  filename <- file.choose()
+  
   ## Clean Memory
   rm(list=ls())
-
+  
   # load packages
   library(utils)
   library(stats)
@@ -15,23 +12,15 @@ rsdg <- function(filename){
   library(reshape2)
   library(tidyr)
   library(tools)
-
-  tmpd <- getwd()
-  #filename <-'dwca-great_reed_warbler-v1.5.zip'
-  #filename <- getOption("myproject.filename")
-  filename <- enterFileName()
-  #paste0(tmpd,'/',filename)
-
+  
   tmpfolder <- tempfile()
 
   ## extract just the child
-  unzip(paste0(tmpd,'/',filename), exdir=tmpfolder)
-  ff <- file.path(paste0(tmpd,'/',filename))
+  unzip(file.path(filename), exdir=tmpfolder)
+  ff <- file.path(filename)
   index <- unzip(ff,list=TRUE)
   ## Read the file
   temp = list.files(path = tmpfolder, pattern="*.txt")
-  #temp
-
 
 
   for(i in 1:length(temp)){
@@ -63,16 +52,7 @@ rsdg <- function(filename){
   dfsamplingsprotocols <- data.frame(samplingsprotocols = levels(raw_event$samplingProtocol), stringsAsFactors=T)
 
 
-  # for(i in seq_along(levels(dfsamplingsprotocols$samplingsprotocols))){
-  #   # split events and mof by sampling protocols
-  #   assign(paste0("event_", dfsamplingsprotocols$samplingsprotocols[i]), data.frame(subset(raw_event, samplingProtocol == dfsamplingsprotocols$samplingsprotocols[i])))
-  #   assign(paste0("mof_", dfsamplingsprotocols$samplingsprotocols[i]), data.frame(subset(extendedmeasurementorfact2, samplingProtocol == dfsamplingsprotocols$samplingsprotocols[i])))
-  #
-  #
-  #   # finding occurrences based on sample protocols
-  #   assign(paste0("occurr_", dfsamplingsprotocols$samplingsprotocols[i]), data.frame(subset(occurrence2, (id %in% occurrence2$eventID) & (occurrence2$samplingProtocol.y %in% dfsamplingsprotocols$samplingsprotocols[i]))))
-  #
-  # }
+
 
 
   # OUTPUT TABLES
@@ -103,22 +83,6 @@ rsdg <- function(filename){
 
 
 
-
-
-
-
-
-
-
-
-
-  # remove subsets
-  # for(i in seq_along(levels(dfsamplingsprotocols$samplingsprotocols))){
-  #   rm(list = listtmp <- paste0("event_", dfsamplingsprotocols$samplingsprotocols[i]) )
-  #   rm(list = listtmp <- paste0("mof_", dfsamplingsprotocols$samplingsprotocols[i]) )
-  #   rm(list = listtmp <- paste0("occurr_", dfsamplingsprotocols$samplingsprotocols[i]) )
-  # }
-
   # remove supporting data frames
   rm(eventswithoccurr)
   rm(eventswithoutoccurr)
@@ -134,4 +98,3 @@ rsdg <- function(filename){
   rm(temp)
 
 }
-
