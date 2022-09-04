@@ -1,5 +1,5 @@
 enterFileName <- function(){
-  options(myproject.filename = readline(prompt="Enter file name: "))
+  filename <- readline(prompt="Enter file name: ")
   return(filename)
 }
 
