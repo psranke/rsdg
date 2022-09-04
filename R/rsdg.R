@@ -1,6 +1,6 @@
-enterFileName <- function(){
-  options(myproject.filename = readline(prompt="Enter file name: "))
-}
+#enterFileName <- function(){
+#  options(myproject.filename = readline(prompt="Enter file name: "))
+#}
 
 rsdg <- function(filename){
 
@@ -17,8 +17,8 @@ rsdg <- function(filename){
 
   tmpd <- getwd()
   #filename <-'dwca-great_reed_warbler-v1.5.zip'
-  filename <- getOption("myproject.filename")
-  paste0(tmpd,'/',filename)
+  #filename <- getOption("myproject.filename")
+  #paste0(tmpd,'/',filename)
 
   tmpfolder <- tempfile()
 
@@ -28,7 +28,7 @@ rsdg <- function(filename){
   index <- unzip(ff,list=TRUE)
   ## Read the file
   temp = list.files(path = tmpfolder, pattern="*.txt")
-  temp
+  #temp
 
 
 
