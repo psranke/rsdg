@@ -3,7 +3,8 @@ rsdg <- function(){
   ## Clean Memory
   rm(list=ls())
 
-  .GlobalEnv$filename <- file.choose()
+  filename <- file.choose()
+  .GlobalEnv$filename <- filename
 
 
   
