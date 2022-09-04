@@ -1,5 +1,6 @@
 enterFileName <- function(){
   options(myproject.filename = readline(prompt="Enter file name: "))
+  return(filename)
 }
 
 rsdg <- function(filename){
@@ -16,9 +17,9 @@ rsdg <- function(filename){
   library(tools)
 
   tmpd <- getwd()
-  enterFileName()
   #filename <-'dwca-great_reed_warbler-v1.5.zip'
-  filename <- getOption("myproject.filename")
+  #filename <- getOption("myproject.filename")
+  filename <- enterFileName()
   #paste0(tmpd,'/',filename)
 
   tmpfolder <- tempfile()
