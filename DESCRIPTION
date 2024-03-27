@@ -1,0 +1,11 @@
+Package: rsdg
+Type: Package
+Title: R-package for importing scientific data from GBIF into R 
+Version: 0.1.0
+Author: Peter Sjolte Ranke
+Maintainer: Peter Sjolte Ranke <psranke@gmail.com>
+Description: Scientific data shared on GBIF follow the Darwin Core standard.
+    With this package you can easily import your data into R by locating your .zip Source archive from GBIF (Darwin Core), and run the rsdg(filename.zip) function in you working directory. Example data can be found here: https://www.gbif.org/dataset/c9acbca5-075b-45bf-bbbc-71736683983a
+License: CC-BY
+Encoding: UTF-8
+LazyData: true
